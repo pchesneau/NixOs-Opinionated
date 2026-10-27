@@ -1,6 +1,6 @@
-{ config, lib, ... }:
+# Base role: Starship prompt (Catppuccin Mocha powerline).
 {
-  config = lib.mkIf config.opinionated.roles.base.enable {
+  flake.modules.homeManager.base = {
     programs.starship = {
       enable = true;
       enableZshIntegration = true;
