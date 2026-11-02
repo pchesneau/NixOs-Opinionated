@@ -35,7 +35,8 @@ let
         userEmail = "alice@example.com";
       };
     };
-    home-manager.users.alice.opinionated.roles.ops.azure.enable = false; #Currently Azure is broken
+    # Currently, azure is broken
+    home-manager.users.alice.opinionated.roles.ops.azure.enable = false;
   };
 
   platformConfigurations = lib.mapAttrs' (
