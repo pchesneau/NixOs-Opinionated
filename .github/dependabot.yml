@@ -9,3 +9,11 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    groups:
+          nix-dependencies:
+            # Define patterns to include dependencies in the group (based on
+            # dependency name)
+            applies-to: version-updates # Applies the group rule to version updates
+            patterns:
+              - "*"       # A wildcard that matches all dependencies in the package
+                          # ecosystem. Note: using "*" may open a large pull request
