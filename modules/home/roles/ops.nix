@@ -10,7 +10,7 @@ let
 in
 {
   options.opinionated.roles.ops = {
-    enable = lib.mkEnableOption "the ops role (Kubernetes, Helm, Flux, Terraform)";
+    enable = lib.mkEnableOption "the ops role (Kubernetes, Helm, Flux, OpenTofu)";
 
     azure.enable = lib.mkEnableOption "Azure CLI and its oh-my-zsh plugin";
   };
@@ -22,6 +22,7 @@ in
         kubectl
         kubernetes-helm
         fluxcd
+        opentofu
       ]
       ++ lib.optional cfg.azure.enable azure-cli;
 
@@ -36,10 +37,8 @@ in
 
     programs.lazyvim.extras.lang.terraform = {
       enable = true;
-      installDependencies = true;
+      installDependencies = false;
     };
 
-    # Pulled in by the LazyVim `lang.terraform` extra.
-    opinionated.unfreePackages = [ "terraform" ];
   };
 }
