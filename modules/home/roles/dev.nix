@@ -36,7 +36,10 @@ in
     lib.mkMerge [
       {
         programs.lazyvim.extraPackages = [ pkgs.jdt-language-server ];
-        opinionated.roles.dev.intellij.plugins = [ "com.intellij.plugins.watcher" ];
+        opinionated.roles.dev.intellij.plugins = [
+          "com.intellij.plugins.watcher"
+          "com.github.copilot"
+        ];
       }
       (lib.mkIf cfg.intellij.enable {
         home.packages = [
