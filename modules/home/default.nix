@@ -13,5 +13,15 @@
     '';
   };
 
+  options.opinionated.nixLd.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+    description = ''
+      Whether the enabled roles run generic (non-Nix) Linux binaries, such as
+      the VS Code server. On NixOS, `programs.nix-ld` is enabled when any user
+      requests it.
+    '';
+  };
+
   config._module.args.opinionatedInputs = inputs;
 }

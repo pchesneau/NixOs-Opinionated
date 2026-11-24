@@ -101,7 +101,9 @@ in
     opinionated.unfreePackages = lib.concatMap (hmUser: hmUser.opinionated.unfreePackages) (
       builtins.attrValues config.home-manager.users
     );
-
+    programs.nix-ld.enable = lib.mkIf (lib.any (hmUser: hmUser.opinionated.nixLd.enable) (
+      builtins.attrValues config.home-manager.users
+    )) (lib.mkDefault true);
     programs.zsh.enable = lib.mkIf (lib.any hasBase (builtins.attrValues cfg.users)) true;
     users.users = lib.mapAttrs (_: _: { shell = pkgs.zsh; }) (lib.filterAttrs (_: hasBase) cfg.users);
   };
